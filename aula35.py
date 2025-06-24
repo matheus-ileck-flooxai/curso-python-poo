@@ -8,24 +8,13 @@
 from dataclasses import dataclass
 
 
-@dataclass
+@dataclass(repr=True)
 class Pessoa:
     nome: str
     idade: int
 
-    @property
-    def nome_completo(self):
-        return f'{self.nome} {self.sobrenome}'
-    
-    @nome_completo.setter
-    def nome_completo(self,valor):
-        nome, *sobrenome = valor.split()
-        self.nome = nome
-        self.sobrenome = ' '.join(sobrenome)
-
 
 if __name__ == '__main__':
-    p1 = Pessoa('Matheus', 'Ileck')
-    p1.nome_completo = 'Matheus Ileck'
-    print(p1)
-    print(p1.nome_completo)
+    lista = [Pessoa('A', 'Z'), Pessoa('B', 'Y'), Pessoa('C','X')]
+    ordenadas = sorted(lista, key=lambda p: p.nome)
+    print(ordenadas)
